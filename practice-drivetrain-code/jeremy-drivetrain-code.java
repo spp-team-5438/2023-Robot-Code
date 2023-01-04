@@ -1,4 +1,3 @@
-//fedor's drivetrain code
 public class Robot {
 	// Default speed for all robot actions. Can be multiplied by floats for fine
 	// tuning.
