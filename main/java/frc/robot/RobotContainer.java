@@ -16,17 +16,8 @@ import edu.wpi.first.wpilibj.GenericHID.Hand;
 import edu.wpi.first.wpilibj.GenericHID;
 //subsystems
 import frc.robot.subsystems.Drivetrain;
-import frc.robot.subsystems.Intake;
-import frc.robot.subsystems.Turret;
-import frc.robot.subsystems.Climb;
 //commands
 import frc.robot.commands.DefaultDrive;
-import frc.robot.commands.ManualTurretAim;
-import frc.robot.commands.IntakePowerCell;
-import frc.robot.commands.ManualClimbControl;
-import frc.robot.commands.setClimbBrakeDisabled;
-import frc.robot.commands.setClimbBrakeEnabled;
-import frc.robot.commands.ExpelPowerCell;
 
 /**
  * This class is where the bulk of the robot should be declared.  Since Command-based is a
