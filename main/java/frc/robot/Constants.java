@@ -17,10 +17,10 @@ package frc.robot;
  */
 public final class Constants {
 	//motor controller ids
-	public static final int BACK_LEFT_VICTORSPX_ID = 1;
-	public static final int FRONT_LEFT_VICTORSPX_ID = 2;
-	public static final int BACK_RIGHT_VICTORSPX_ID = 3;
-	public static final int FRONT_RIGHT_VICTORSPX_ID = 4;
+	public static final int BACK_LEFT_CANSparkMax_ID = 1;
+	public static final int FRONT_LEFT_CANSparkMax_ID = 2;
+	public static final int BACK_RIGHT_CANSparkMax_ID = 3;
+	public static final int FRONT_RIGHT_CANSparkMax_ID = 4;
 	
 	//controller ids
 	public static final int DRIVER_CONTROLLER_PORT = 0;

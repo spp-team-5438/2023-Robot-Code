@@ -106,7 +106,7 @@
         },
         {
             "groupId": "com.ctre.phoenixpro.sim",
-            "artifactId": "simVictorSPX",
+            "artifactId": "simCANSparkMax",
             "version": "23.0.1",
             "isJar": false,
             "skipInvalidPlatforms": true,
@@ -336,9 +336,9 @@
         },
         {
             "groupId": "com.ctre.phoenixpro.sim",
-            "artifactId": "simVictorSPX",
+            "artifactId": "simCANSparkMax",
             "version": "23.0.1",
-            "libName": "CTRE_SimVictorSPX",
+            "libName": "CTRE_SimCANSparkMax",
             "headerClassifier": "headers",
             "sharedLibrary": true,
             "skipInvalidPlatforms": true,
