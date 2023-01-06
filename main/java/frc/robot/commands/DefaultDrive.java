@@ -6,45 +6,45 @@
 /*----------------------------------------------------------------------------*/
 
 package frc.robot.commands;
-import frc.robot.subsystems.Drivetrain;
+
 import edu.wpi.first.wpilibj2.command.CommandBase;
 import java.util.function.DoubleSupplier;
 
 public class DefaultDrive extends CommandBase {
-  private final DoubleSupplier m_fwd, m_rot;
-  private final Drivetrain m_Drivetrain;
+	private final DoubleSupplier m_fwd, m_rot;
+	private final Drivetrain m_Drivetrain;
 
-  /**
-   * Creates a new DefaultDrive.
-   */
-  public DefaultDrive(Drivetrain drivetrain, DoubleSupplier fwdValue, DoubleSupplier rotValue) {
-    //define requirements
-    m_Drivetrain = drivetrain;
-    m_fwd = fwdValue;
-    m_rot = rotValue;
-    addRequirements(drivetrain);
-  }
+	/**
+	 * Creates a new DefaultDrive.
+	 */
+	public DefaultDrive(Drivetrain drivetrain, DoubleSupplier fwdValue, DoubleSupplier rotValue) {
+		// define requirements
+		m_Drivetrain = drivetrain;
+		m_fwd = fwdValue;
+		m_rot = rotValue;
+		addRequirements(drivetrain);
+	}
 
-  // Called when the command is initially scheduled.
-  @Override
-  public void initialize() {
-  }
+	// Called when the command is initially scheduled.
+	@Override
+	public void initialize() {
+	}
 
-  // Called every time the scheduler runs while the command is scheduled.
-  @Override
-  public void execute() {
-    //m_Drivetrain.arcadeDrive(fwd.getAsDouble(), rot.getAsDouble());
-    m_Drivetrain.curvatureDrive(m_fwd.getAsDouble(), m_rot.getAsDouble(), true);
-  }
+	// Called every time the scheduler runs while the command is scheduled.
+	@Override
+	public void execute() {
+		// m_Drivetrain.arcadeDrive(fwd.getAsDouble(), rot.getAsDouble());
+		m_Drivetrain.curvatureDrive(m_fwd.getAsDouble(), m_rot.getAsDouble(), true);
+	}
 
-  // Called once the command ends or is interrupted.
-  @Override
-  public void end(boolean interrupted) {
-  }
+	// Called once the command ends or is interrupted.
+	@Override
+	public void end(boolean interrupted) {
+	}
 
-  // Returns true when the command should end.
-  @Override
-  public boolean isFinished() {
-    return false;
-  }
+	// Returns true when the command should end.
+	@Override
+	public boolean isFinished() {
+		return false;
+	}
 }
