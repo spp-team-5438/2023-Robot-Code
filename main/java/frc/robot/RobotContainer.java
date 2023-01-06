@@ -18,12 +18,6 @@ import edu.wpi.first.wpilibj.GenericHID;
 // TODO: Add subsystems  <06-01-23, jeremy> //
 //commands
 import frc.robot.commands.DefaultDrive;
-import frc.robot.commands.ManualTurretAim;
-import frc.robot.commands.IntakePowerCell;
-import frc.robot.commands.ManualClimbControl;
-import frc.robot.commands.setClimbBrakeDisabled;
-import frc.robot.commands.setClimbBrakeEnabled;
-import frc.robot.commands.ExpelPowerCell;
 
 /**
  * This class is where the bulk of the robot should be declared. Since
@@ -58,17 +52,6 @@ public class RobotContainer {
 						m_drivetrain,
 						() -> getFwdAxis(),
 						() -> getTurnAxis()));
-
-		m_turret.setDefaultCommand(
-				new ManualTurretAim(
-						m_turret,
-						() -> getManualTurretAxis()));
-
-		m_climb.setDefaultCommand(
-				new ManualClimbControl(
-						m_climb,
-						() -> getClimbControl()));
-
 	}
 
 	/**
@@ -80,19 +63,7 @@ public class RobotContainer {
 	 * {@link edu.wpi.first.wpilibj2.command.button.JoystickButton}.
 	 */
 	private void configureButtonBindings() {
-		// manual expel intake with fightstick a
-		new JoystickButton(fightStick, Constants.A_BUTTON_PORT)
-				.whileHeld(new ExpelPowerCell(m_intake, () -> Constants.INTAKE_POWER));
-		// intake, top feed, bottom feed with fightstick x
-		new JoystickButton(fightStick, Constants.X_BUTTON_PORT)
-				.whileHeld(new IntakePowerCell(m_intake, () -> Constants.INTAKE_POWER));
-		// .alongWith();
 
-		// new JoystickButton(fightStick, Constants.LB_BUTTON_PORT)
-		// new JoystickButton(fightStick, fightStick.getTriggerAxis(Hand.kRight))
-		// .whenActive(new setClimbBrakeDisabled(m_climb));
-		new JoystickButton(fightStick, Constants.RB_BUTTON_PORT)
-				.whenPressed(new setClimbBrakeEnabled(m_climb));
 	}
 
 	// fightstickLBButton.whileHeld(new LimelightTurretAim(m_turret));
@@ -103,20 +74,6 @@ public class RobotContainer {
 
 	private double getTurnAxis() {
 		return driveController.getRawAxis(4);
-	}
-
-	private double getManualTurretAxis() {
-		return fightStick.getRawAxis(0);
-	}
-
-	private double getClimbControl() {
-		if (fightStick.getYButton()) {
-			return 0.5;
-		} else if (fightStick.getBButton()) {
-			return -0.5;
-		} else {
-			return 0;
-		}
 	}
 
 	/**
