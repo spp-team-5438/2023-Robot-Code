@@ -6,23 +6,24 @@
 /*----------------------------------------------------------------------------*/
 
 package frc.robot.commands;
-import frc.robot.subsystems.Drivetrain;
-import edu.wpi.first.wpilibj2.command.CommandBase;
+
 import java.util.function.DoubleSupplier;
 
-public class DefaultDrive extends CommandBase {
-  private final DoubleSupplier m_fwd, m_rot;
-  private final Drivetrain m_Drivetrain;
+import edu.wpi.first.wpilibj2.command.CommandBase;
+import frc.robot.subsystems.Intake;
+
+public class IntakePowerCell extends CommandBase {
+
+  private final Intake m_intake;
+  private final DoubleSupplier m_power;
 
   /**
-   * Creates a new DefaultDrive.
+   * Creates a new IntakePowerCell.
    */
-  public DefaultDrive(Drivetrain drivetrain, DoubleSupplier fwdValue, DoubleSupplier rotValue) {
-    //define requirements
-    m_Drivetrain = drivetrain;
-    m_fwd = fwdValue;
-    m_rot = rotValue;
-    addRequirements(drivetrain);
+  public IntakePowerCell(Intake intake, DoubleSupplier power) {
+    m_intake = intake;
+    m_power = power;
+    addRequirements(intake);
   }
 
   // Called when the command is initially scheduled.
@@ -33,8 +34,7 @@ public class DefaultDrive extends CommandBase {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    //m_Drivetrain.arcadeDrive(fwd.getAsDouble(), rot.getAsDouble());
-    m_Drivetrain.curvatureDrive(m_fwd.getAsDouble(), m_rot.getAsDouble(), true);
+    m_intake.setIntakeSpeedIn(m_power.getAsDouble());
   }
 
   // Called once the command ends or is interrupted.

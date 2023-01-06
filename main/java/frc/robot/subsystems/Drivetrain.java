@@ -24,10 +24,14 @@ public class Drivetrain extends SubsystemBase {
   private final CANSparkMax backRight = new CANSparkMax(Constants.BACK_RIGHT_SPARKMAX_ID, MotorType.kBrushless);
   private final CANSparkMax frontRight = new CANSparkMax(Constants.FRONT_RIGHT_SPARKMAX_ID, MotorType.kBrushless);
 
+  private final CANEncoder backLeftEncoder = new CANEncoder(backLeft);
+  private final CANEncoder frontLeftEncoder = new CANEncoder(frontLeft);
+  private final CANEncoder backRightEncoder = new CANEncoder(backRight);
+  private final CANEncoder frontRightEncoder = new CANEncoder(frontRight);
 
   //define left and right side controller groups
-  private final SpeedControllerGroup left = new MotorControllerGroup(backLeft, frontLeft);
-  private final SpeedControllerGroup right = new MotorControllerGroup(backRight, frontRight);
+  private final SpeedControllerGroup left = new SpeedControllerGroup(backLeft, frontLeft);
+  private final SpeedControllerGroup right = new SpeedControllerGroup(backRight, frontRight);
 
   //define drive
   private final DifferentialDrive drive = new DifferentialDrive(left, right);
@@ -49,6 +53,22 @@ public class Drivetrain extends SubsystemBase {
 
   public void setMaxOutput(double maxOutput) {
     drive.setMaxOutput(maxOutput);
+  }
+
+  public double getBackLeftEncoder() {
+    return backLeftEncoder.getPosition();
+  }
+
+  public double getBackRightEncoder() {
+    return backRightEncoder.getPosition();
+  }
+
+  public double getFrontLeftEncoder() {
+    return frontLeftEncoder.getPosition();
+  }
+
+  public double getFrontRightEncoder() {
+    return frontRightEncoder.getPosition();
   }
 
   @Override

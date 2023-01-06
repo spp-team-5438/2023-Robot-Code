@@ -6,35 +6,32 @@
 /*----------------------------------------------------------------------------*/
 
 package frc.robot.commands;
-import frc.robot.subsystems.Drivetrain;
+
 import edu.wpi.first.wpilibj2.command.CommandBase;
-import java.util.function.DoubleSupplier;
+import frc.robot.subsystems.Climb;
 
-public class DefaultDrive extends CommandBase {
-  private final DoubleSupplier m_fwd, m_rot;
-  private final Drivetrain m_Drivetrain;
+public class setClimbBrakeDisabled extends CommandBase {
 
+  private final Climb m_climb;
+  
   /**
-   * Creates a new DefaultDrive.
+   * Creates a new setClimbBrakeDisabled.
    */
-  public DefaultDrive(Drivetrain drivetrain, DoubleSupplier fwdValue, DoubleSupplier rotValue) {
-    //define requirements
-    m_Drivetrain = drivetrain;
-    m_fwd = fwdValue;
-    m_rot = rotValue;
-    addRequirements(drivetrain);
+  public setClimbBrakeDisabled(Climb climb) {
+    // Use addRequirements() here to declare subsystem dependencies.
+    m_climb = climb;
+    addRequirements(m_climb);
   }
 
   // Called when the command is initially scheduled.
   @Override
   public void initialize() {
+    m_climb.setClimbBrake(true);
   }
 
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    //m_Drivetrain.arcadeDrive(fwd.getAsDouble(), rot.getAsDouble());
-    m_Drivetrain.curvatureDrive(m_fwd.getAsDouble(), m_rot.getAsDouble(), true);
   }
 
   // Called once the command ends or is interrupted.
