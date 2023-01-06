@@ -20,10 +20,10 @@ import com.ctre.phoenix.motorcontrol.can.VictorSPXConfiguration;
 public class Drivetrain extends SubsystemBase {
 
   //define Spark Maxes with IDs and as brushless controllers
-  private final CANSparkMax backLeft = new CANSparkMax(Constants.BACK_LEFT_SPARKMAX_ID, MotorType.kBrushless);
-  private final CANSparkMax frontLeft = new CANSparkMax(Constants.FRONT_LEFT_SPARKMAX_ID, MotorType.kBrushless);
-  private final CANSparkMax backRight = new CANSparkMax(Constants.BACK_RIGHT_SPARKMAX_ID, MotorType.kBrushless);
-  private final CANSparkMax frontRight = new CANSparkMax(Constants.FRONT_RIGHT_SPARKMAX_ID, MotorType.kBrushless);
+  private final CANSparkMax backLeft = new VictorSPX(Constants.BACK_LEFT_SPARKMAX_ID, MotorType.kBrushless);
+  private final CANSparkMax frontLeft = new VictorSPX(Constants.FRONT_LEFT_SPARKMAX_ID, MotorType.kBrushless);
+  private final CANSparkMax backRight = new VictorSPX(Constants.BACK_RIGHT_SPARKMAX_ID, MotorType.kBrushless);
+  private final CANSparkMax frontRight = new VictorSPX(Constants.FRONT_RIGHT_SPARKMAX_ID, MotorType.kBrushless);
 
 	// define left and right side controller groups
 	private final SpeedControllerGroup left = new SpeedControllerGroup(backLeft, frontLeft);
