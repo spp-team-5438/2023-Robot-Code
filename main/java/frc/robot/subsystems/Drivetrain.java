@@ -12,16 +12,16 @@ import edu.wpi.first.wpilibj.SpeedControllerGroup;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 
-import com.revrobotics.CANSparkMax;
-import com.revrobotics.CANSparkMaxLowLevel.MotorType;
+import com.ctre.phoenix.motorcontrol.can.VictorSPX;
+import com.ctre.phoenix.motorcontrol.can.VictorSPXConfiguration;
 
 public class Drivetrain extends SubsystemBase {
 
   //define Spark Maxes with IDs and as brushless controllers
-  private final CANSparkMax backLeft = new CANSparkMax(Constants.BACK_LEFT_SPARKMAX_ID, MotorType.kBrushless);
-  private final CANSparkMax frontLeft = new CANSparkMax(Constants.FRONT_LEFT_SPARKMAX_ID, MotorType.kBrushless);
-  private final CANSparkMax backRight = new CANSparkMax(Constants.BACK_RIGHT_SPARKMAX_ID, MotorType.kBrushless);
-  private final CANSparkMax frontRight = new CANSparkMax(Constants.FRONT_RIGHT_SPARKMAX_ID, MotorType.kBrushless);
+  private final VictorSPX backLeft = new VictorSPX(Constants.BACK_LEFT_SPARKMAX_ID, MotorType.kBrushless);
+  private final VictorSPX frontLeft = new VictorSPX(Constants.FRONT_LEFT_SPARKMAX_ID, MotorType.kBrushless);
+  private final VictorSPX backRight = new VictorSPX(Constants.BACK_RIGHT_SPARKMAX_ID, MotorType.kBrushless);
+  private final VictorSPX frontRight = new VictorSPX(Constants.FRONT_RIGHT_SPARKMAX_ID, MotorType.kBrushless);
 
   //define left and right side controller groups
   private final SpeedControllerGroup left = new SpeedControllerGroup(backLeft, frontLeft);
